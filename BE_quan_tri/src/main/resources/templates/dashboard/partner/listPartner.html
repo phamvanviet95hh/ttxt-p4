@@ -1,0 +1,72 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center p-2">
+                        <div class="info-topLeft">
+                            <a href="#" id="info-topLeft-prev">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                            <label>
+                                <b> Trở lại</b>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                        <div class="info-left-avatar">
+                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                        </div>
+                        <div class="info-left-status mb-3">
+                            <button type="button" class="btn btn-success btn-addnewpartner">
+                                <i class="fa fa-plus" aria-hidden="true"></i> Thêm đơn vị
+                            </button>
+                        </div>
+                        <div class="info-left-email w-100 overflow-hidden">
+                            <table class="table table-hover">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">STT</th>
+                                    <th scope="col">Tên đơn vị</th>
+                                    <th scope="col">Code</th>
+                                    <th scope="col">Người đại diện</th>
+                                    <th scope="col">Ngày tạo</th>
+                                    <th scope="col">Hành động</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr th:each="partner, start : ${partners}">
+                                    <th scope="row" th:text="${start.index + 1}"></th>
+                                    <td>
+                                        <a href="#" th:data-id="${partner.getId()}" class="link-bank view-bank" th:text="${partner.getPartnerName()}">
+                                        </a>
+                                    </td>
+                                    <td th:text="${partner.getPartnerCode()}"></td>
+                                    <td th:text="${partner.getPartnerUser()}"></td>
+                                    <td th:text="${partner.getCreatedAt()}"></td>
+                                    <td>
+                                        <a href="#" class="link-bank edit-bank" th:data-id="${partner.getId()}">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="#" class="remove-partner-service" th:data-id="${partner.getId()}">
+                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/web/js/partners/listPartner.js}"></script>
+

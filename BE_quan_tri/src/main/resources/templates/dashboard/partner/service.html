@@ -1,0 +1,104 @@
+
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+            
+            <div class="item-service-bank item2" id="item2" role="PARTNER">
+                <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-5 ">
+                    <div class="d-flex transaction-box-find">
+                        <div class="loc ms-3" style="margin-right: 10px">
+                            <label for="startdate">Từ ngày :</label>
+                            <input type="datetime-local" name="startdate" id="startdate" value="">
+                        </div>
+                        <div class="loc ms-3" style="margin-right: 10px">
+                            <label for="enddate">Đến ngày :</label>
+                            <input type="datetime-local" name="enddate" id="enddate" value="">
+                        </div>
+                        <div class="loc ms-3" style="margin-right: 10px">
+                            <button type="button" class="btn btn-secondary btn-findReport" th:data-value="${idPartner}"><i class="fa fa-search" aria-hidden="true"></i>
+                                Search</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="loadReportDetail">
+                    <table class="table table-hover">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">STT</th>
+                            <th scope="col" class="admin_role">Mã đơn vị</th>
+                            <th scope="col">Tên danh mục</th>
+                            <th scope="col">Tên dịch vụ</th>
+                            <th scope="col"> Tổng transaction</th>
+                            <th scope="col"> Tổng transaction thành công </th>
+                            <th scope="col"> Thành tiền </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="item, start : ${serviceDtosNews}">
+                            <th scope="row" th:text="${start.index + 1}"></th>
+                            <td
+                                    class="admin_role"
+                                    style="vertical-align: middle;"
+                                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                                    th:rowspan="${item.getRowspan()}"
+                                    th:text="${item.getPartnerCode()}"></td>
+                            <td
+                                    style="vertical-align: middle;"
+                                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                                    th:rowspan="${item.getRowspan()}"
+                                    th:text="${item.getCategoryName()}"></td>
+                            <td th:text="${item.getServiceName()}"></td>
+                            <td
+                                    style="vertical-align: middle;"
+                                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                                    th:rowspan="${item.getRowspan()}"
+                                    th:text="${#numbers.formatDecimal(item.getTotalRequest(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                            <td
+                                    style="vertical-align: middle;"
+                                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                                    th:rowspan="${item.getRowspan()}"
+                                    th:text="${#numbers.formatDecimal(item.getTotalSuccessfulRequests(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                            <td th:text="${#numbers.formatDecimal(item.getTotalCost(), 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+            <div class="col-12 mt-5" id="box-categoryOfPart">
+                <div class="info-bottom p-3">
+                    <h3 class="title mb-3">Danh sách danh mục dịch vụ đang được sử dụng </h3>
+                    <div class="box-contentCateOfPart">
+                        <div class="box-contentCateOfPart-item  mb-3" th:each="page3Item, start : ${page3}">
+                            <div class="box-contentCateOfPart-item-left d-flex justify-content-between align-items-center">
+                                <div class="box-contentCateOfPart-item-nameCate d-flex">
+                                    <i class="fa fa-chevron-circle-down btn-viewService-Cate" aria-hidden="true" th:data-value="${page3Item.getCategoryId()}" th:data-idPart="${idPartner}"></i>
+                                    <h3 th:text="${page3Item.getCategoryName()}" class="ml-2"></h3>
+                                </div>
+                                <div class="box-contentCateOfPart-item-timeGolive">
+                                    <p>Thời gian Golive: <b th:text="${page3Item.getDateGolive() != null ? page3Item.getDateGolive() : 'Chưa cấp'}"></b></p>
+                                </div>
+                                <div class="boxActionCateInPart">
+<!--                                    <button class="btn btn-success">Cấp Quotas</button>-->
+                                    <button class="btn btn-primary btn-setGolive" th:data-value="${page3Item.getCategoryId()}" th:data-idPart="${idPartner}">Set Golive</button>
+                                    <button class="btn btn-info btn-addService" th:data-value="${page3Item.getCategoryId()}" th:data-id="${idPartner}">Thêm Dịch vụ</button>
+                                </div>
+
+                            </div>
+                            <div class="box-serviceInCate" id="box-serviceInCate">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-bottom-box-list">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/web/js/partners/serviceUser.js}"></script>

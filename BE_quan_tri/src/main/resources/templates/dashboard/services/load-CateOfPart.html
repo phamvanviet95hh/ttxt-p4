@@ -1,0 +1,8 @@
+<tr th:each="cate, start : ${categoryOfPartnerDtosList}">
+  <th scope="row" th:text="${start.index + 1}"></th>
+  <td th:text="${cate.getServiceName() == null ? 'Chưa đăng ký dịch vụ' : cate.getServiceName() }">...</td>
+  <td id="partActionInfo-detail">
+    <button class="btn btn-danger btn-removeService" th:data-service="${cate.getIdService()}" th:data-value="${categoryId}" th:data-id="${idPartner}">Xoá dịch vụ</button>
+  </td>
+</tr>
+<script th:src="@{/web/js/partners/loadDataServiceInPart.js}"></script>

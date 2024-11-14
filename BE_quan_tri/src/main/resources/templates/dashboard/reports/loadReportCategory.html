@@ -1,0 +1,39 @@
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Tên danh mục </th>
+        <th scope="col">Dịch vụ</th>
+        <th scope="col">Tổng Transaction</th>
+        <th scope="col">Tổng thành công</th>
+        <th scope="col">Thành tiền</th>
+    </tr>
+    </thead>
+    <tbody id="ttxt-data-box">
+    <tr th:each="reportService, start: ${serviceDtosNews}">
+        <td th:text="${start.index +1}"></td>
+        <td
+                style="vertical-align: middle"
+                th:if="${reportService.rowspan > 0}"
+                th:attr="rowspan=${reportService.rowspan}"
+        >
+            <a th:text="${reportService.getSateServiceName()}" th:data-id="${reportService.getId()}" class="link-bank view-report1"></a>
+        </td>
+        <td><a href="#" class="viewReportService" th:data-id="${reportService.id}" th:text="${reportService.serviceName}"></a> </td>
+        <td
+                style="vertical-align: middle"
+                th:text="${#numbers.formatDecimal(reportService.totalTransaction, 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td
+                style="vertical-align: middle"
+                th:text="${#numbers.formatDecimal(reportService.totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td th:text="${#numbers.formatDecimal(reportService.getTotalMoney(), 0, 'COMMA', 0, 'COMMA')} + ' VND'"></td>
+    </tr>
+    <tr>
+        <td colspan="3">Tổng : </td>
+        <td class="indam" th:text="${#numbers.formatDecimal(totalTransaction, 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td class="indam" th:text="${#numbers.formatDecimal(totalMoney, 0, 'COMMA', 0, 'COMMA')} + ' VND'"> </td>
+    </tr>
+    </tbody>
+</table>
+<script th:src="@{/web/js/report/reportCateFind.js}"></script>

@@ -1,0 +1,123 @@
+<div class="content-page">
+    <div class="content">
+
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <!-- end page title -->
+
+            <div class="row mb-5">
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card widget-flat">
+                        <div class="card-body p-0">
+                            <div class="p-3 pb-0">
+                                <div class="float-right">
+                                    <i class="mdi mdi-cart text-primary widget-icon"></i>
+                                </div>
+                                <h5 class="text-muted font-weight-normal mt-0">Tổng số transaction thành công trong tháng:</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="mt-2" id="request_number1" th:text="${#numbers.formatDecimal(countTransaction, 0, 'COMMA', 0, 'COMMA')}"></h3>
+                                    <i class="fa fa-line-chart" style="font-size: 40px" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                            <div id="sparkline1"></div>
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+
+                <div class="col-xl-6 col-lg-6">
+                    <div class="card widget-flat">
+                        <div class="card-body p-0">
+                            <div class="p-3 pb-0">
+                                <div class="float-right">
+                                    <i class="mdi mdi-currency-usd text-danger widget-icon"></i>
+                                </div>
+                                <h5 class="text-muted font-weight-normal mt-0">Tổng chi phí trong tháng</h5>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h3 class="mt-2" id="request_number" th:text="${#numbers.formatDecimal(totalMoney, 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+                                    </h3>
+                                    <i class="fa fa-usd" style="font-size: 40px" aria-hidden="true"></i>
+                                </div>
+
+                            </div>
+                            <div id="sparkline2"></div>
+                        </div> <!-- end card-body-->
+                    </div> <!-- end card-->
+                </div> <!-- end col-->
+            </div>
+            <div class="row mb-5">
+                <div class="col-xl-12">
+                    <div class="card" style="height: 465px;">
+                        <div class="card-body">
+
+                            <canvas id="myChart"></canvas>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- end row -->
+
+        </div> <!-- container-fluid -->
+
+    </div> <!-- content -->
+</div>
+<script th:src="@{/web/js/chartjs/chart.js}"></script>
+<script>
+    $(document).ready(function () {
+        let myChart;
+        let Jsondata;
+        fetch(`${localdomain}/partners/thongKe?idPart=`,{
+            method: "GET",
+            headers : {
+                "Content-Type" : "application/json"
+            }
+        }).then(response => {
+            if (!response.ok) {
+                if (response.status === 500) {
+                    customLogout();
+                }
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        }).then(data => {
+            if (data.success) {
+                Jsondata = data.data;
+                createChart(Jsondata, 'bar');
+            }
+        }).catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+
+        function createChart(data, type) {
+            console.log(data)
+            myChart = new Chart("myChart", {
+                type: type,
+                data: {
+                    labels: data.map(row => row.partnerCode),
+                    datasets: [{
+                        label: 'trong năm 2024',
+                        data: data.map(row => row.totalMoney),
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    },
+                    responsive: true,
+                    maintainAspectRatio: false,
+                }
+            });
+        }
+
+
+
+    })
+</script>
+<script th:src="@{/web/pages/solieu.js}"></script>

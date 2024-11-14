@@ -1,0 +1,33 @@
+<table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Mã đơn vị</th>
+        <th scope="col"> Tổng transaction </th>
+        <th scope="col"> Tổng transaction thành công </th>
+        <th scope="col"> Thành tiền </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item, start : ${page}">
+        <th scope="row" th:text="${start.index}"></th>
+        <td>
+            <a href="#" th:data-id="${item.getIdPartner()}" class="link-bank view-report" th:text="${item.getPartnerCode()}">
+
+            </a>
+        </td>
+        <td th:text="${#numbers.formatDecimal(item.getTotalRequests(), 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td th:text="${#numbers.formatDecimal(item.getTotalSuccessfulRequests(), 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td th:text="${#numbers.formatDecimal(item.getTotalCost(), 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">Tổng : </td>
+        <td class="indam" th:text="${#numbers.formatDecimal(totalTransaction, 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"></td>
+        <td class="indam" th:text="${#numbers.formatDecimal(totalMoney, 0, 'COMMA', 0, 'COMMA')} + ' VND'"> </td>
+    </tr>
+    </tbody>
+</table>
+<script th:src="@{/web/js/report/findListReport.js}"></script>

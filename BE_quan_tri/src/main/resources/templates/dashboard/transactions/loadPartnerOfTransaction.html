@@ -1,0 +1,16 @@
+<li th:each="item : ${part}" th:text="${item.getPartCode()}" th:data-id="${item.getPartId()}" th:data-value="${item.getPartCode()}" class="partnerSelect"></li>
+
+<script>
+    function clearAndAddContent(value) {
+        var inputElement = document.getElementById("partnerName");
+        inputElement.value = value;
+    }
+    $(".partnerSelect").click(function (){
+        let idPartCode = $(this).attr("data-value");
+        clearAndAddContent(idPartCode);
+        $("#box-searchPartner").html("");
+    });
+    $("body").click(function (){
+        $("#box-searchPartner").html("");
+    });
+</script>

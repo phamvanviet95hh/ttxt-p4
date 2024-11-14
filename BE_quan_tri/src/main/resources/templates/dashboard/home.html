@@ -1,0 +1,134 @@
+<!-- ========== Left Sidebar Start ========== -->
+<div>
+    <div class="left-side-menu">
+        <div class="slimscroll-menu">
+
+            <!-- LOGO -->
+            <a href="#" class="logo text-center mb-4">
+                <span class="logo-lg">
+                    <img width="120" height="50" alt="Tổng công ty Công nghệ - Viễn thông Toàn Cầu (Gtel) "
+                         title="Tổng công ty Công nghệ - Viễn thông Toàn Cầu (Gtel) " class=""
+                         th:src="@{/web/imgs/logo_cds.png}" id="logo-dv" />
+                </span>
+
+            </a>
+
+            <!--- Sidemenu -->
+            <div id="sidebar-menu">
+
+                <ul class="metismenu" id="side-menu">
+
+                    <li class="menu-title">Navigation</li>
+
+                    <li>
+                        <a id="dashboard">
+                            <i class="fa fa-tachometer" aria-hidden="true"></i>
+                            <span class="badge badge-success float-right">01</span>
+                            <span> Dashboard </span>
+                        </a>
+                    </li>
+                    <li class="partner">
+                        <a class="partnerLink click" id="partnerLink">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                            <span> Danh sách đơn vị </span>
+                        </a>
+                    </li>
+                    <li class="qlService">
+                        <a class="click" id="viewDv" href="#">
+                            <i class="fa fa-rocket" aria-hidden="true"></i>
+                            <span> Quản lý dịch vụ </span>
+                        </a>
+                        <ul class="ul-children">
+                            <li>
+                                <a class="serviceLink click" id="serviceLink">
+                                    <i class="fa fa-rocket" aria-hidden="true"></i>
+                                    <span> Danh sách nhóm dịch vụ </span>
+                                </a>
+                            </li>
+                            <li class="listService">
+                                <a class="click" href="#">
+                                    <i class="fa fa-chevron-circle-right" aria-hidden="true"></i>
+                                    Danh sách dịch vụ
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                    <li >
+                        <a class="click" id="viewReport" href="#">
+                            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                            <span> Quản lý báo cáo </span>
+                        </a>
+                        <ul class="ul-children">
+                            <li>
+                                <a class="click reportLink report" id="reportLink" >
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    <span> Báo cáo theo đơn vị </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="serviceLink click" id="reportCategoryService">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    <span> Báo cáo theo danh mục</span>
+                                </a>
+                            </li>
+                            <li >
+                                <a class="click" href="#"  id="reportService">
+                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    Báo cáo theo dịch vụ
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+                    <li class="transaction">
+                        <a class="click transactionLink" id="transactionLink">
+                            <i class="fa fa-line-chart" aria-hidden="true"></i>
+                            <span> Transactions </span>
+                        </a>
+
+                    </li>
+                    <li class="service">
+                        <a class="click serviceLink" id="serviceLink111">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                            <span>Dịch vụ </span>
+                        </a>
+                    </li>
+
+
+                </ul>
+
+            </div>
+            <!-- End Sidebar -->
+
+            <div class="clearfix"></div>
+
+        </div>
+
+
+    </div>
+    <div style="position: fixed; z-index: 99999999999999999999999999; right: 10px; top: 75px">
+        <div class="alert alert-success alert-dismissible fade" role="alert" id="myAlert" style="display: none;">
+            <b id="contentAlert"></b>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade" role="alert" id="myAlertError"
+             style="display: none;">
+            <b id="contentAlertError"></b>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+
+
+    <div id="content_box">
+
+
+    </div>
+
+    <script th:src="@{/web/js/home/home.js}"></script>
+</div>

@@ -1,0 +1,18 @@
+
+<tr th:each="item, start : ${categoryDtos}">
+
+    <th scope="row" th:text="${start.index + 1}"></th>
+    <td>
+        <a href="#" th:data-id="${item.getServiceId()}" class="link-bank view-categoryService" th:text="${item.getServiceName()}">
+        </a>
+    </td>
+    <td th:text="${item.getServiceName()}"></td>
+    <td th:text="${item.getCreatedAt()}" ></td>
+    <td>
+        <a href="#" class="remove-category-service" th:data-id="${item.getId()}"  th:data-idCategory="${idCategory}">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+    </td>
+</tr>
+<script th:src="@{/web/js/services/tableService.js}"></script>
+

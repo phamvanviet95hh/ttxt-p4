@@ -1,0 +1,91 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-3 ">
+                    <div class="d-flex transaction-box-find justify-content-between">
+                        <div class="row">
+                            <div class="loc ms-3" style="margin-right: 10px">
+                                <label for="startdate">Từ ngày :</label>
+                                <input type="datetime-local" name="startdate" id="startdate" value="">
+                            </div>
+                            <div class="loc ms-3" style="margin-right: 10px">
+                                <label for="enddate">Đến ngày :</label>
+                                <input type="datetime-local" name="enddate" id="enddate" value="">
+                            </div>
+                            <div class="loc ms-3" style="margin-right: 10px">
+                                <button type="button" class="btn btn-secondary btn-findReport" id="btn-findReport"><i class="fa fa-search" aria-hidden="true"></i>
+                                    Tìm kiếm </button>
+                            </div>
+                        </div>
+                        <button class="btn btn-success btn-exportData" id="btn-exportData">Xuất báo cáo</button>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                                        <div class="info-left-avatar">
+                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-left-status mb-4">
+                                            <h5 id="username" class="text-center"></h5>
+                                            <label class="text-center" style="display: block"> <b>Báo cáo theo danh mục</b> </label>
+                                            <p id="info-status"></p>
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden" id="loadReport">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Tên danh mục </th>
+                                                    <th scope="col">Dịch vụ</th>
+                                                    <th scope="col">Tổng Transaction</th>
+                                                    <th scope="col">Tổng thành công</th>
+                                                    <th scope="col">Thành tiền</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody id="ttxt-data-box">
+                                                <tr th:each="reportService, start: ${serviceDtosNews}">
+                                                    <td th:text="${start.index +1}"></td>
+                                                    <td
+                                                            style="vertical-align: middle"
+                                                            th:if="${start.index == 0 or (start.index > 0 and reportService.sateServiceName != serviceDtosNews[start.index - 1].sateServiceName)}"
+                                                            th:rowspan="${reportService.getRowspan()}"
+                                                            >
+                                                            <a th:text="${reportService.getSateServiceName()}" th:data-id="${reportService.getId()}" class="link-bank view-report1"></a>
+                                                    </td>
+                                                    <td><a href="#" class="viewReportService" th:data-id="${reportService.id}" th:text="${reportService.serviceName}"></a> </td>
+                                                    <td
+                                                            style="vertical-align: middle"
+                                                            th:text="${#numbers.formatDecimal(reportService.totalTransaction, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    <td
+                                                            style="vertical-align: middle"
+                                                            th:text="${#numbers.formatDecimal(reportService.totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    <td th:text="${#numbers.formatDecimal(reportService.getTotalMoney(), 0, 'COMMA', 0, 'COMMA')} + ' VND'"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3">Tổng : </td>
+                                                    <td class="indam" th:text="${#numbers.formatDecimal(totalTransaction, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    <td class="indam" th:text="${#numbers.formatDecimal(totalMoney, 0, 'COMMA', 0, 'COMMA')} + ' VND'"> </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/web/js/report/reportServiceTotal.js}"></script>

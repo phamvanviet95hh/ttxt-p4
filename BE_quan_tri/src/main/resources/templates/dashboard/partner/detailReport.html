@@ -1,0 +1,46 @@
+<div class="box-detail-reportPartner">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Mã đơn vị</th>
+            <th scope="col">Tên danh mục</th>
+            <th scope="col">Tên dịch vụ</th>
+            <th scope="col"> Tổng transaction </th>
+            <th scope="col"> Tổng transaction thành công </th>
+            <th scope="col"> Thành tiền </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item, start : ${serviceDtosNews}">
+            <th scope="row" th:text="${start.index + 1}"></th>
+            <td
+                    style="vertical-align: middle;"
+                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                    th:rowspan="${item.getRowspan()}"
+                    th:text="${item.getPartnerCode()}"></td>
+            <td
+                    style="vertical-align: middle;"
+                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                    th:rowspan="${item.getRowspan()}"
+                    th:text="${item.getCategoryName()}"></td>
+            <td th:text="${item.getServiceName()}"></td>
+            <td
+                    style="vertical-align: middle;"
+                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                    th:rowspan="${item.getRowspan()}"
+                    th:text="${#numbers.formatDecimal(item.getTotalRequest(), 0, 'COMMA', 0, 'COMMA')}"></td>
+            <td
+                    style="vertical-align: middle;"
+                    th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                    th:rowspan="${item.getRowspan()}"
+                    th:text="${#numbers.formatDecimal(item.getTotalSuccessfulRequests(), 0, 'COMMA', 0, 'COMMA')}"></td>
+            <td th:text="${#numbers.formatDecimal(item.getTotalCost(), 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</div>
+
+

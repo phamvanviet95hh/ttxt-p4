@@ -1,0 +1,41 @@
+<div class="transaction-box-view-info d-flex justify-content-center flex-column align-items-center">
+  <div class="box-icon-close">
+    <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+  </div>
+  <div class="transaction-info-box-top">
+
+      <div class="transaction-box-item mb-3">
+        <label> Org Code :</label>
+        <b th:text="${transactionPage.getOrgCode()}"></b>
+      </div>
+      <div class="transaction-box-item mb-3">
+        <label> Service Code :</label>
+        <b th:text="${transactionPage.getServiceCodeRequest()}"></b>
+     </div>
+      <div class="transaction-box-item mb-3">
+        <label> Request Id :</label>
+        <b th:text="${transactionPage.getRequestId()}"></b>
+      </div>
+      <div class="transaction-box-item mb-3">
+        <label> Id :</label>
+        <b th:text="${transactionPage.getIdQ()}"></b>
+      </div>
+      <div class="transaction-box-item mb-3">
+        <label> Path :</label>
+        <b th:text="${transactionPage.getPath()}"></b>
+      </div>
+      <div class="transaction-box-item mb-3">
+        <label> Status :</label>
+        <b th:text="${transactionPage.getStatusCode() == '200' ? 'Active' : 'Fail'}"></b>
+      </div>
+      <div class="transaction-box-item mb-3">
+        <label> Time request :</label>
+        <b th:text="${transactionPage.getTimeRequest()}"></b>
+      </div>
+  </div>
+</div>
+<script>
+    $(".box-icon-close").click(function (){
+      $("#info-transaction-box").removeClass("hien")
+    });
+</script>

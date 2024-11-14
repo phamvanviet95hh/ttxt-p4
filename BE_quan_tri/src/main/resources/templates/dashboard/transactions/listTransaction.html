@@ -1,0 +1,134 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-3 ">
+                    <div class="d-flex transaction-box-find justify-content-between">
+                        <div class="row">
+                            <div class="loc ms-3">
+                                <select id="findTypeTransaction">
+                                    <option value="week" >Tuần</option>
+                                    <option value="optional" selected>Tuỳ chọn</option>
+                                </select>
+                            </div>
+                            <div class="d-flex box-loc  mb-3" style="margin-left: 10px;" id="week">
+                                <div class="loc ms-3" style="margin-right: 10px">
+                                    <label for="startDateWeek">Từ ngày :</label>
+                                    <input type="date" name="startDateWeek" id="startDateWeek" value="">
+                                </div>
+                                <div class="loc ms-3" style="margin-right: 10px">
+                                    <label for="endDateWeek">Đến ngày :</label>
+                                    <input type="date" name="endDateWeek" id="endDateWeek" value="" disabled>
+                                </div>
+
+                            </div>
+                            <div class="d-flex box-loc mb-3 active" style="margin-left: 10px;" id="optional">
+                                <div class="loc ms-3" style="margin-right: 10px">
+                                    <label for="startdate">Từ ngày :</label>
+                                    <input type="datetime-local" name="startdate" id="startdate" value="">
+                                </div>
+                                <div class="loc ms-3" style="margin-right: 10px">
+                                    <label for="enddate">Đến ngày :</label>
+                                    <input type="datetime-local" name="enddate" id="enddate" value="">
+                                </div>
+                            </div>
+
+                            <div class="loc ms-3" style="margin-right: 10px" id="box-partnerName">
+                                <input type="text" name="partnerName" id="partnerName" value="" placeholder="Mã đơn vị...">
+                                <ul id="box-searchPartner">
+
+                                </ul>
+                            </div>
+                            <div class="loc ms-3" style="margin-right: 10px; margin-left: 10px">
+                                <select id="statusPartner">
+                                    <option value=""> Status </option>
+                                    <option value="200"> Success </option>
+                                    <option value="400"> False </option>
+                                </select>
+                            </div>
+                            <div class="loc ms-3" style="margin-right: 10px">
+                                <button type="button" class="btn btn-secondary btn-timkiemTransaction"><i class="fa fa-search" aria-hidden="true"></i>
+                                    Tìm kiếm</button>
+                            </div>
+
+                        </div>
+                        <button class="btn btn-success btn-exportData">Xuất báo cáo</button>
+
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+
+                                <div class="col-12">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+
+                                        <div class="info-left-avatar">
+                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden" id="loadTransaction">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col" class="admin_role">Org_code</th>
+                                                    <th scope="col" >Service_code</th>
+                                                    <th scope="col">Request Id</th>
+                                                    <th scope="col">Request Time</th>
+                                                    <th scope="col">Action</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="transaction, start : ${transactionPage}">
+                                                        <th scope="row" th:text="${start.index + 1}"></th>
+                                                        <td class="admin_role" th:text="${transaction.getOrgCode()}">
+                                                        </td>
+                                                        <td>
+                                                            <a href="#" th:data-id="${transaction.getId()}" class="link-bank view-transaction" th:text="${transaction.getCategoryServices().getServiceName()}">
+                                                            </a>
+                                                        </td>
+                                                        <td th:text="${transaction.getRequestId()}"></td>
+
+                                                        <td th:text="${transaction.getTimeRequest()}"></td>
+                                                        <td>
+                                                            <button type="button" class="btn btn-success" th:if="${transaction.getStatusCode() == '200'}">Success</button>
+                                                            <button type="button" class="btn btn-danger" th:if="${transaction.getStatusCode() != '200'}">Fail</button>
+                                                        </td>
+                                                    </tr>
+
+                                                </tbody>
+                                            </table>
+                                            <div>
+                                                <a th:if="${transactionPage.hasPrevious()}" th:data-page="${transactionPage.number - 1}" th:data-size="${transactionPage.size}" class="prevPageTransaction">Previous</a>
+
+                                                <input th:value="${transactionPage.number + 1}" class="inputPage" th:maxlength="${transactionPage.totalPages}"> / <span th:text="${transactionPage.totalPages}">1</span>
+
+                                                <a th:if="${transactionPage.hasNext()}"
+                                                   th:data-page="${transactionPage.number + 1}" th:data-size="${transactionPage.size}" class="nextPageTransaction">Next</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="info-transaction-box">
+
+    </div>
+
+</div>
+<script th:src="@{/web/js/transactions/listTransaction.js}"></script>

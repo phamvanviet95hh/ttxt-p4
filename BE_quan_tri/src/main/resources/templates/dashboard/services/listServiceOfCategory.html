@@ -1,0 +1,47 @@
+<div class="box-table-listService-content">
+    <input type="hidden" th:value="${idCategoryServices}" id="idCategoryServices"/>
+    <div class="box-icon-close">
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    </div>
+    <div class="box-infoCategory mb-3">
+        <h2 class="text-center text-uppercase"> Thông tin danh mục : <b th:text="${categoryServices.getServiceName()}"></b> </h2>
+        <button class="btn btn-success select-box btn-showBox"><i class="fa fa-plus" aria-hidden="true"></i> Thêm dịch vụ </button>
+        <div id="box-setlect-service" class="mt-3">
+
+        </div>
+    </div>
+    <div id="box-content-serviceChildren-content">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Tên dịch vụ</th>
+                <th scope="col">Code</th>
+                <th scope="col">Ngày tạo</th>
+                <th scope="col">Hành động</th>
+            </tr>
+            </thead>
+            <tbody id="box-content-serviceChildren-content-body">
+            <tr th:each="item, start : ${categoryDtos}">
+                <th scope="row" th:text="${start.index + 1}"></th>
+                <td>
+                    <a href="#" th:data-id="${item.getServiceId()}" class="link-bank view-categoryService" th:text="${item.getServiceName()}">
+                    </a>
+                </td>
+                <td th:text="${item.getServiceName()}"></td>
+                <td th:text="${item.getCreatedAt()}" ></td>
+                <td>
+                    <a href="#" class="link-bank view-bank" data-id="1">
+                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <a href="#" class="remove-partner-service" data-id="1">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script th:src="@{/web/js/services/test.js}"></script>

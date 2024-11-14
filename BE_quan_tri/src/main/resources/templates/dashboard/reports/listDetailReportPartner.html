@@ -1,0 +1,68 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center p-2">
+                        <div class="info-topLeft">
+                            <button class="btn btn-warning btn-trolai" id="btn-trolaiReportCate">Trở lại</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                                        <div class="info-left-avatar">
+                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-left-status mb-4">
+                                            <h5 id="username" class="text-center"></h5>
+                                            <label class="text-center" style="display: block"> <b>Báo cáo theo danh mục</b> </label>
+                                            <p id="info-status"></p>
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden" id="loadReport">
+                                                <table class="table table-hover">
+                                                    <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col"> Mã đơn vị</th>
+                                                        <th scope="col"> Tổng transaction </th>
+                                                        <th scope="col"> Tổng transaction thành công </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr th:each="item, start : ${serviceDtosNews}">
+                                                        <th scope="row" th:text="${start.index + 1}"></th>
+                                                        <td th:text="${item.getPartnerCode()}"></td>
+                                                        <td th:text="${#numbers.formatDecimal(item.getTotalTransaction(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                        <td th:text="${#numbers.formatDecimal(item.getTotalTransactionSuccess(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">Tổng : </td>
+                                                        <td class="indam" th:text="${#numbers.formatDecimal(totalTransaction, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                        <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/web/js/report/listDetailReportPartner.js}"></script>
+

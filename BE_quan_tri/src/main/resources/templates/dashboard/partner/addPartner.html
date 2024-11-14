@@ -1,0 +1,119 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center p-2">
+                        <div class="info-topLeft">
+                            <a href="#" id="info-topLeft-prev">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                            <label>
+                                <b> Trở lại</b>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+
+                        <div class="modal-content" style="width: 100%">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Thêm mới đơn vị</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-3 border border-1">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="register-user">
+                                            <p class="mb-0"><b>Thông tin tài khoản: </b></p>
+
+                                            <div class="box-logo mb-3">
+                                                <div class="box-logo-img">
+                                                    <div class="content-productCategoryImg-box d-flex flex-column align-items-center justify-content-center">
+                                                        <div class="image-preview d-flex flex-column align-items-center justify-content-center"
+                                                             id="imagePreview">
+                                                            <span id="content-productCategoryImg-span">
+
+                                                            </span>
+                                                        </div>
+                                                        <div class="box_btn-uploadImg">
+                                                            <input type="file" id="imageInput" accept="image/*" name="file">
+                                                            <button type="button" class="btn btn-info btn-selectImg">Chọn ảnh sản
+                                                                phẩm</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Tên đăng nhập:</p>
+                                                <input type="text" placeholder="username..." value="" name="username" id="username" />
+                                                <p class="mb-0" style="color: red; font-size: 12px; font-style: italic;" id="errorUsername"></p>
+                                            </div>
+
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Password :</p>
+                                                <input type="password" placeholder="Password..." value="" name="password" id="passwords" />
+                                                <p class="mb-0" style="color: red; font-size: 12px; font-style: italic;" id="errorRePasswords"></p>
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">RePassword :</p>
+                                                <input type="password" placeholder="RePassword..." value="" name="rePassword" id="rePassword" />
+                                                <p class="mb-0" style="color: red; font-size: 12px; font-style: italic;" id="errorRePassword"></p>
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="register-user">
+                                            <p class="mb-0"><b>Thông tin đơn vị: </b></p>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Tên đơn vị:</p>
+                                                <input type="text" placeholder="Tên doanh nghiệp..." value="" name="partnerNameRegister" id="partnerNameRegister" />
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Code :</p>
+                                                <input type="text" placeholder="Code..." value="" name="code" id="code" />
+                                                <p class="mb-0" style="color: red; font-size: 12px; font-style: italic;" id="errorCodePartner"></p>
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Tên người đại diện:</p>
+                                                <input type="text" placeholder="Tên người đại diện..." value="" name="fullNameRegister" id="fullNameRegister" />
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Email:</p>
+                                                <input type="email" placeholder="Email..." value="" name="email" id="email" />
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Mã số thuế :</p>
+                                                <input type="text" placeholder="Mã số thuế..." value="" name="taxRegister" id="taxRegister" />
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Số điện thoại :</p>
+                                                <input type="text" placeholder="Số điện thoại..." value="" name="phoneRegister" id="phoneRegister" maxlength="10" />
+                                            </div>
+                                            <div class="register-user-content mb-2">
+                                                <p class="mb-0">Địa chỉ :</p>
+                                                <input type="text" placeholder="Địa chỉ ..." value="" name="addressRegister" id="addressRegister" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-warning btn-addPartnerBack" data-bs-dismiss="modal">Trở lại</button>
+                                <button type="button" class="btn btn-primary btn-addPartnerRegister">Thêm</button>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/web/js/partners/addPartner.js}"></script>

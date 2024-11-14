@@ -1,0 +1,112 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center p-2">
+                        <div class="info-topLeft">
+                           <button class="btn btn-warning btn-trolai" id="btn-trolaiListKh">Trở lại</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-12 mb-5">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                                        <div class="info-left-avatar">
+                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-left-status">
+
+                                            <label class="text-center" style="display: block">Thống kê theo danh mục thuộc KH : <b th:text="${namePartner}"></b></label>
+
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col"> Tên danh mục </th>
+                                                    <th scope="col"> Tổng transaction </th>
+                                                    <th scope="col"> Tổng transaction thành công </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="item, start : ${reportCategoryOfPartners}">
+                                                    <th scope="row" th:text="${start.index + 1}"></th>
+                                                    <td th:text="${item.getCategoryName()}"></td>
+                                                    <td th:text="${#numbers.formatDecimal(item.getTotalTransaction(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    <td th:text="${#numbers.formatDecimal(item.getTotalTransactionSuccess(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                    </td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td class="indam" colspan="2">Tổng : </td>
+                                                    <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionCate, 0, 'COMMA', 0, 'COMMA')}"> </td>
+                                                    <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionSucceessCate, 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                                        <div class="info-left-avatar">
+                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-left-status mb-3">
+                                            <h5 id="username" class="text-center"></h5>
+                                            <label class="text-center" style="display: block">Thống kê theo dịch vụ thuộc KH :<b th:text="${namePartner}"></b></label>
+                                            <p id="info-status"></p>
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden" id="loadReport">
+                                                <table class="table table-hover">
+                                                    <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">STT</th>
+                                                        <th scope="col">Tên dịch vụ</th>
+                                                        <th scope="col"> Tổng transaction </th>
+                                                        <th scope="col"> Tổng transaction thành công </th>
+                                                        <th scope="col"> Thành tiền </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr th:each="item, start : ${page}">
+                                                        <th scope="row" th:text="${start.index + 1}"></th>
+                                                        <td th:text="${item.getServiceName()}"></td>
+                                                        <td th:text="${#numbers.formatDecimal(item.getTotalRequest(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                        <td th:text="${#numbers.formatDecimal(item.getTotalSuccessfulRequests(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                                        <td th:text="${#numbers.formatDecimal(item.getTotalCost(), 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+                                                        </td>
+
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="indam" colspan="2">Tổng : </td>
+                                                        <td class="indam" th:text="${#numbers.formatDecimal(totalTransaction, 0, 'COMMA', 0, 'COMMA')}"> </td>
+                                                        <td class="indam" th:text="${#numbers.formatDecimal(totalTransactionSuccess, 0, 'COMMA', 0, 'COMMA')}"> </td>
+                                                        <td class="indam" th:text="${#numbers.formatDecimal(totalMoney, 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/web/js/report/listDetailReport.js}"></script>
+

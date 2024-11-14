@@ -1,0 +1,439 @@
+*, *:after, *:before{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+
+}
+body{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+}
+.header_box{
+    background-image: linear-gradient(#764BA2, #667EEA);
+}
+.hd_info-avatar i,
+.hd_info-avatar a{
+    color: white !important;
+}
+
+.hd_info-avatar .fa-user{
+    font-size: 18px;
+    border: 1px solid white;
+    padding: 7px 10px;
+    border-radius: 50%;
+}
+.hd_info{
+    position: relative;
+}
+.btn-link{
+    position: absolute;
+    bottom: -70px;
+    left: 0;
+    background: white;
+    opacity: 0;
+    padding: 7px;
+    color: #000 !important;
+    transition: all ease-in-out 0.3s;
+    width: 121px;
+    box-shadow: 0 0 5px 5px #0000000f;
+}
+.hd_info:hover{
+    cursor: pointer;
+}
+.hd_info:hover .btn-link{
+    bottom: -59px;
+    opacity: 1;
+}
+.menu_left{
+    background: #242527;
+    height: 1000px;
+    padding-top: 30px;
+}
+.menu_left ul{
+    padding: 0;
+}
+.content_box{
+    background: rgb(241, 243, 246);
+    padding: 10px;
+}
+.col-2, .col-10{
+    padding: 0 !important;
+}
+.cusor{
+    cursor: pointer;
+}
+.action{
+    position: relative;
+    padding-right: 7px;
+}
+.action:after{
+    content: "|";
+    right: 0;
+    position: absolute;
+}
+.cusor i{
+    font-size: 18px;
+}
+.menu_left li{
+    color: white;
+    cursor: pointer;
+    list-style: none;
+    padding: 7px 10px 7px 25px;
+}
+.menu_left li:hover{
+    background: black;
+}
+.menu_left li i{
+    margin-right: 5px;
+}
+.thongkeUser_boxRight,
+.thongkeUser_boxLeft,
+.box_thongke{
+    padding: 20px;
+}
+.thongkeUser_box{
+    background: white;
+}
+.thongkeUser_title1{
+    text-transform: uppercase;
+    color: rgb(114, 99, 188);
+    font-weight: bold;
+    font-size: 14.5px;
+}
+.thongkeUser_title2{
+    text-transform: uppercase;
+    color: rgb(247, 93, 129);
+    font-weight: bold;
+    font-size: 14.5px;
+}
+#content-request,
+.thongkeUser_title1_desc{
+    font-size: 12.5px;
+}
+
+#request_number3,
+#request_number4,
+#request_number1,
+#request_number2,
+#request_number{
+    font-size: 40px;
+}
+.icon_statis{
+    font-size: 30px;
+}
+.loc input{
+    height: 35px;
+    border: 1px solid #0000001c;
+    padding: 10px;
+    width: 165px;
+    border-radius: 5px;
+}
+#viewchukyso{
+    z-index: 99999;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #000000ba;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.viewchukyso_content{
+    border: 5px solid #a99797;
+    border-radius: 7px;
+    padding: 25px;
+    width: 550px;
+    height: 219px;
+    word-wrap: break-word;
+    color: #000000;
+    background: white;
+}
+#viewchukyso.show{
+    display: flex;
+}
+#contentRequest{
+    max-height: 670px ;
+    overflow-y: scroll ;
+}
+.listGroupUsers,
+.listUser{
+    display: none;
+}
+.listGroupUsers.show,
+.listUser.show{
+    display: block;
+}
+.page-title-box .page-title{
+    display: inline-block;
+    font-size: 26px;
+}
+.fa-users{
+    font-size: 40px;
+}
+.fa-usersDb{
+    font-size: 16px;
+}
+.formRegister{
+    width: 100%;
+    height: max-content;
+    padding: 10px;
+    border-radius: 5px;
+    border : 1px solid #0a331330;
+}
+#formSelectform{
+    border: 1px solid #0000001f;
+    height: 31px;
+    width: 134px;
+    padding: 7px;
+    border-radius: 5px;
+}
+.star{
+    color: red;
+    font-size: 14px;
+}
+.formErrorDepartment{
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+    margin: 0;
+}
+.form-group label{
+    margin: 0;
+}
+.click,
+#thongke,
+.departmentBlockUsers{
+    cursor: pointer;
+}
+.blue{
+    color: #1a7e2f;
+}
+.red{
+    color: #a92222;
+}
+.listGroupUser_li{
+    position: relative;
+}
+.listGroupUser_li>a{
+    display: inline-block;
+    width: 100%;
+    color: #fcf8e3 !important;
+    cursor: pointer;
+}
+.listGroupUser_li>i{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    transform: translateY(-50%);
+    color: #fcf8e3 !important;
+    cursor: pointer;
+}
+
+.box_contentListGroupUser > ul > .listGroupUser_li{
+    list-style: none;
+    padding: 7px;
+    background: #6c757d;
+}
+
+.box_contentListGroupUser-chil{
+    background: #fff;
+    padding: 10px;
+    display: none;
+}
+
+.listGroupUser_li-chil{
+    list-style: none;
+}
+.departmentRemoveUsers>i,
+.departmentEditUsers>i,
+.box_contentListGroupUser-chil>i{
+    cursor: pointer;
+}
+.table-responsive{
+    height: 500px;
+    overflow-y: scroll;
+}
+.box_check2,
+.box_check1,
+.box_check{
+    max-height: 600px;
+    width: 100%;
+    height: max-content;
+    overflow-y: scroll;
+    border: 1px solid #00000024;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+}
+.box_input-check{
+    margin-right: 7px;
+    width: 48%;
+    display: inline-block;
+}
+.box_check,
+.box_check1{
+    height: 350px;
+}
+.btn-addNewGroup1{
+    padding: 5px;
+    margin-bottom: 7px;
+    margin-left: 10px;
+}
+.group_box{
+    margin-right: 10px;
+}
+.group_box label{
+    margin-right: 10px;
+    padding: 0px 5px;
+    border: 1px solid #00000024;
+    border-radius: 5px;
+}
+.group_box-chil{
+    position: relative;
+}
+.group_box .removeGroup{
+    color: red;
+    position: absolute;
+    top: -7px;
+    right: 6px;
+    cursor: pointer;
+}
+.box_check{
+    display: none;
+}
+#formStatus,
+#formRole{
+    padding: 4px 5px;
+    border: 1px solid #00000024;
+    border-radius: 5px;
+}
+.change_box,
+.box_groupAddUser3,
+.box_groupAddUser2,
+.box_groupAddUser{
+    position: fixed;
+    background: #000000c7;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+}
+.change_box_content,
+.box_groupAddUserChildren3,
+.box_groupAddUserChildren2,
+.box_groupAddUserChildren{
+    width: 400px;
+    padding: 15px;
+    background: #fff;
+    border: 5px solid #d5cfcffc;
+    border-radius: 5px;
+}
+.contentNewGroup{
+    margin-top: 10px;
+}
+.change_box,
+.box_groupAddUser3,
+.box_groupAddUser2,
+.box_groupAddUser{
+    display: none;
+}
+.change_box.show,
+.box_groupAddUser3.show,
+.box_groupAddUser2.show,
+.box_groupAddUser.show{
+    display: flex;
+}
+#startdate,
+#enddate{
+    font-size: 14px;
+    color: #6c757d;
+}
+.boxInfoUser-content{
+    padding: 10px;
+    border: 1px solid #00000024;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+.title_label{
+    margin-right: 10px;
+}
+.title_h5{
+    font-weight: bold;
+}
+.listDepartment{
+    display: none;
+}
+.listDepartment.show{
+    display: block;
+}
+.listDepartment i{
+    margin: 0px 1px !important;
+}
+.page-title-box_parent{
+    padding: 10px 10px;
+}
+.table thead th{
+    font-weight: bold;
+}
+.formRegisterDepartment{
+    padding: 15px;
+    border: 1px solid #98a6ad;
+    border-radius: 10px;
+
+}
+.baoCaoGtel,
+.baoCaoCompany,
+.baocao{
+    display: none;
+}
+.baoCaoGtel.show,
+.baoCaoCompany.show,
+.baocao.show{
+    display: block;
+}
+.baocao_link {
+    position: relative;
+}
+.baocao_link .fa-chevron-circle-right{
+    transform: translateY(-50%);
+    position: absolute;
+    top: 50%;
+    right: 26px;
+}
+.table_boxBaoCaoGroup{
+    max-height: 600px;
+    height: unset;
+    overflow-y: scroll;
+}
+#statusGroup{
+    border: 1px solid #00000024;
+    height: 32px;
+    width: 97px;
+    border-radius: 5px;
+}
+.box_imgeUser{
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #0101011a;
+}
+.box_imgeUser i{
+    font-size: 186px;
+}
+#style-1::-webkit-scrollbar {
+    width: 6px;
+    background-color: #F5F5F5;
+}
+#style-1::-webkit-scrollbar-thumb {
+    background-color: #6b7782e3;
+}
+.table-responsive.table-admin{
+    height: unset;
+    overflow: unset;
+}

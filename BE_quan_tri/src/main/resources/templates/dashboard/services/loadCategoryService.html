@@ -1,0 +1,12 @@
+<div class="box-cate-part">
+  <ul>
+    <li class="mb-2" th:each="itemService : ${categoryServices}"  th:if="${!productComparator.isInList2(itemService, categoryDtos)}">
+      <input name="option" class="inputService" type="checkbox" style="margin: 0" th:value="${itemService.getId()}"/>
+      <label th:text="${itemService.getCategoryServiceName()}"></label>
+    </li>
+  </ul>
+  <div class="action-box-listService">
+    <button class="btn btn-success btn-addServiceToCate"  th:data-idPart="${idPartner}"><i class="fa fa-plus" aria-hidden="true"></i> Thêm danh mục</button>
+  </div>
+</div>
+<script th:src="@{/web/js/services/boxListCateService.js}"></script>

@@ -1,0 +1,39 @@
+<div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabelEdit"> Thông tin dịch vụ </h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
+<div class="modal-body">
+    <input type="hidden" id="idService" th:value="${idService}">
+    <div class="d-flex justify-content-between align-items-center mb-2 editService-content">
+        <label for="addNameServiceEdit">Tên dịch vụ : </label>
+        <div class="box-content-edit-input">
+            <input type="text" id="addNameServiceEdit" placeholder="Nhập tên dịch vụ" th:value="${services.getServiceName()}">
+<!--            <i class="fa fa-pencil-square-o" data-key="serviceName" aria-hidden="true"></i>-->
+            <p class="box-loi" id="box-content-edit-inputName"></p>
+        </div>
+    </div>
+    <p class="mb-3 box-error"><i class="errorFromGloable" id="loiCategorySVNameEdit"></i></p>
+<!--    <div class="d-flex justify-content-between align-items-center mb-2 editService-content">-->
+<!--        <label for="addCodeServiceEdit">Mã dịch vụ : </label>-->
+<!--        <div class="box-content-edit-input">-->
+<!--            <input type="text" id="addCodeServiceEdit" placeholder="Nhập mã dịch vụ" th:value="${services.getServiceCode()}">-->
+<!--&lt;!&ndash;            <i class="fa fa-pencil-square-o" data-key="serviceCode" aria-hidden="true"></i>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </div>-->
+    <p class="mb-3 box-error"><i class="errorFromGloable" id="loiCategorySVCodeEdit"></i></p>
+    <div class="d-flex justify-content-between align-items-center mb-2 editService-content">
+        <label for="addPriceServiceEdit">Giá tiền dịch vụ : </label>
+        <div  class="box-content-edit-input">
+            <input type="text" id="addPriceServiceEdit" placeholder="Nhập giá tiền dịch vụ" th:value="${services.getServicePrice()}">
+<!--            <i class="fa fa-pencil-square-o" data-key="servicePrice" aria-hidden="true"></i>-->
+            <p class="box-loi" id="box-content-edit-inputPrice"></p>
+        </div>
+
+    </div>
+    <p class="mb-3 box-error"><i class="errorFromGloable" id="loiCategorySVPriceEdit"></i></p>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary btn-close-addService" data-bs-dismiss="modal">Thoát</button>
+    <button type="button" class="btn btn-primary btn-send-editService">Sửa thông tin</button>
+</div>
+<script th:src="@{/web/js/services/inforService.js}"></script>

@@ -1,0 +1,268 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center p-2">
+                        <div class="info-topLeft">
+                            <a href="#" id="info-topLeft-prev">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                            <label>
+                                <b> Trở lại</b>
+                            </label>
+                        </div>
+                        <div class="info-topRight">
+                            <button class="btn btn-success btn-editInFor" th:data-idPart="${partner.getId()}"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Chỉnh sử thông tin</button>
+                            <button class="btn btn-info btn-changePassword" th:data-idPart="${partner.getId()}"><i class="fa fa-key" aria-hidden="true"></i>Thay đổi mật khẩu</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item hien" role="presentation">
+                            <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-item="item1"
+
+                                    type="button" role="tab" aria-controls="home" aria-selected="true">Thông tin Đơn vị : <p th:if="${partner.getRole() != 'ADMIN'}" th:text="${partner.getPartnerName()}"></p></button>
+
+                        </li>
+                        <li class="nav-item" role="presentation" id="user-info-service-an" th:if="${partner.getRole() != 'ADMIN'}">
+                            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-item="item2"
+                                    type="button" role="tab" aria-controls="profile" aria-selected="false">Dịch vụ</button>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+                        <div class="item-bank item1 show" id="item1" >
+
+                            <div class="row">
+                                <div class="col-3">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                                        <div class="info-left-avatar mb-3">
+                                            <i class="fa fa-university" aria-hidden="true" th:if="${partner.getPartnerLogo() == null}"></i>
+                                            <img class="img-logo" width="75" height="50" th:if="${partner.getPartnerLogo() != null}" th:src="'data:image/png;base64,' + ${partner.getPartnerLogo()}" alt="">
+                                        </div>
+                                        <div class="info-left-status mb-3">
+                                            <h5 id="username" class="text-center" th:text="${partner.getUserName()}"></h5>
+                                            <label class="text-center" style="display: block" th:text="${partner.getRole()}"></label>
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden mb-3">
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="w-10">
+                                                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="w-75 pl-2 ">
+                                                    <label id="label-email" th:text="${partner.getPartnerEmail()}"></label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="w-10">
+                                                    <i class="fa fa-phone" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="w-75 pl-2 ">
+                                                    <label id="label-phone" th:text="${partner.getPartnerPhone()}"></label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex align-items-center mb-3">
+                                                <div class="w-10">
+                                                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                                </div>
+                                                <div class="w-75 pl-2 ">
+                                                    <label id="label-address" th:text="${partner.getPartnerAddress()}"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <div class="col-9">
+                                    <div class="info-right p-3 ">
+                                        <div class="detail-top border-bottom pt-3 pb-3"><b>Thông tin Đơn vị</b></div>
+                                        <div class="d-flex justify-content-between border-bottom pt-3 pb-3">
+                                            <div class="info-content-left w-50">
+                                                <p class="mb-2">Tên đơn vị</p>
+                                                <b id="info-right-fullName" th:data-value="${partner.getPartnerName()}" data-key="partnerName" th:text="${partner.getPartnerName()}"></b>
+<!--                                                <a href="#" class="editUserInfo" data-name="Company's name" id="partnerNameInput"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                                            </div>
+                                            <div class="info-content-right  w-50">
+                                                <p class="mb-1">Mã số thuế</p>
+                                                <b id="info-right-taxNumber" th:data-value="${partner.getPartnerTax()}" data-key="partnerTax" th:text="${partner.getPartnerTax()}" ></b>
+<!--                                                <a href="#" class="editUserInfo" data-name="Tax Number" id="taxNumberInputBank"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                                            </div>
+
+                                        </div>
+                                        <div class="d-flex justify-content-between border-bottom pt-3 pb-3">
+                                            <div class="info-content-left w-50">
+                                                <p class="mb-1">Số điện thoại</p>
+                                                <b id="info-right-phoneNumber" th:data-value="${partner.getPartnerPhone()}" data-key="partnerPhone" th:text="${partner.getPartnerPhone()}"></b>
+<!--                                                <a href="#" class="editUserInfo" data-name="Phone number" id="phoneNumberInput"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                                            </div>
+                                            <div class="info-content-right  w-50">
+                                                <p class="mb-1">Thư điện tử:</p>
+                                                <b id="info-right-email" th:data-value="${partner.getPartnerEmail()}" data-key="email" th:text="${partner.getPartnerEmail()}"></b>
+<!--                                                <a href="#" class="editUserInfo" data-name="Email" id="emailInput"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between border-bottom pt-3 pb-3">
+                                            <div class="info-content-right  w-50">
+                                                <p class="mb-1">Mã đơn vị:</p>
+                                                <b id="info-right-code" th:data-value="${partner.getPartnerCode()}"  data-key="partnerCode" th:text="${partner.getPartnerCode()}"></b>
+<!--                                                <a href="#" class="editUserInfo" data-name="Code" id="codeInput"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 mt-5" id="box-categoryOfPart" th:if="${partner.getRole() != 'ADMIN'}">
+                                    <div class="info-bottom p-3">
+                                        <h3 class="title mb-3">Danh sách danh mục dịch vụ đang được sử dụng </h3>
+                                        <div class="box-list-category mb-3">
+                                            <div class="box-list-category-top text-center mb-3">
+                                                <button class="btn btn-success btn-addCateinPart" th:data-id="${partner.getId()}">
+                                                    <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                                                    <span class="text"> Hiển thị danh sách danh mục</span>
+
+                                                </button>
+                                            </div>
+                                            <div class="box-list-category-content" id="box-list-category-content">
+
+                                            </div>
+                                        </div>
+                                        <div class="box-contentCateOfPart">
+                                            <div class="box-contentCateOfPart-item  mb-3" th:each="page3Item, start : ${page3}">
+                                                <div class="box-contentCateOfPart-item-left d-flex justify-content-between align-items-center">
+                                                    <div class="box-contentCateOfPart-item-nameCate d-flex">
+                                                        <i class="fa fa-chevron-circle-down btn-viewService-Cate" aria-hidden="true" th:data-value="${page3Item.getCategoryId()}" th:data-idPart="${partner.getId()}"></i>
+                                                        <h3 th:text="${page3Item.getCategoryName()}" class="ml-2"></h3>
+                                                    </div>
+<!--                                                    <div class="box-contentCateOfPart-item-count">-->
+<!--                                                        <p>Số lượng dịch vụ: <b>3</b> </p>-->
+<!--                                                    </div>-->
+                                                    <div class="box-contentCateOfPart-item-timeGolive">
+                                                       <p>Thời gian Golive: <b th:text="${page3Item.getDateGolive() != null ? page3Item.getDateGolive() : 'Chưa cấp'}"></b></p>
+                                                    </div>
+                                                    <div>
+<!--                                                        <button class="btn btn-success">Cấp Quotas</button>-->
+                                                        <button class="btn btn-primary btn-setGolive" th:data-value="${page3Item.getCategoryId()}" th:data-idPart="${partner.getId()}">Set Golive</button>
+                                                        <button class="btn btn-info btn-addService" th:data-value="${page3Item.getCategoryId()}" th:data-id="${partner.getId()}">Thêm Dịch vụ</button>
+                                                        <button class="btn btn-danger btn-removeService" th:data-value="${page3Item.getCategoryId()}" th:data-id="${partner.getId()}">Xóa danh mục</button>
+                                                    </div>
+
+                                                </div>
+                                                <div class="box-serviceInCate" id="box-serviceInCate">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="info-bottom-box-list">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="item-bank item2" id="item2" role="">
+                            <div class="col-12 d-flex justify-content-between align-items-center mt-3 mb-5 ">
+                                <div class="d-flex transaction-box-find">
+                                    <div class="loc ms-3" style="margin-right: 10px">
+                                        <label for="startdate">Từ ngày :</label>
+                                        <input type="datetime-local" name="startdate" id="startdate" value="">
+                                    </div>
+                                    <div class="loc ms-3" style="margin-right: 10px">
+                                        <label for="enddate">Đến ngày :</label>
+                                        <input type="datetime-local" name="enddate" id="enddate" value="">
+                                    </div>
+                                    <div class="loc ms-3" style="margin-right: 10px">
+                                        <button type="button" class="btn btn-secondary btn-findReport" th:data-value="${idPartner}"><i class="fa fa-search" aria-hidden="true"></i>
+                                            Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="loadReportDetail">
+                                <table class="table table-hover">
+                                    <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Mã khách hàng</th>
+                                        <th scope="col">Tên danh mục</th>
+                                        <th scope="col">Tên dịch vụ</th>
+                                        <th scope="col"> Tổng transaction</th>
+                                        <th scope="col"> Tổng transaction thành công </th>
+                                        <th scope="col"> Thành tiền </th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="item, start : ${serviceDtosNews}">
+                                        <th scope="row" th:text="${start.index + 1}"></th>
+                                        <td
+                                                style="vertical-align: middle;"
+                                                th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                                                th:rowspan="${item.getRowspan()}"
+                                                th:text="${item.getPartnerCode()}"></td>
+                                        <td
+                                                style="vertical-align: middle;"
+                                                th:if="${start.index == 0 or (start.index > 0 and item.categoryName != serviceDtosNews[start.index - 1].categoryName)}"
+                                                th:rowspan="${item.getRowspan()}"
+                                                th:text="${item.getCategoryName()}"></td>
+                                        <td th:text="${item.getServiceName()}"></td>
+                                        <td
+                                                style="vertical-align: middle;"
+                                                th:text="${#numbers.formatDecimal(item.getTotalRequest(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                        <td
+                                                style="vertical-align: middle;"
+                                                th:text="${#numbers.formatDecimal(item.getTotalSuccessfulRequests(), 0, 'COMMA', 0, 'COMMA')}"></td>
+                                        <td th:text="${#numbers.formatDecimal(item.getTotalCost(), 0, 'COMMA', 0, 'COMMA')} + ' VND'">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="info-box-golive">
+
+
+    </div>
+
+    <div id="box-changePasswordNew">
+        <div class="box-changePasswordNew-item">
+            <div class="box-icon-close">
+                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+            </div>
+            <div class="mb-3">
+                <div class="box-errorChangeParent text-center">
+                    <p class="text-center" id="content-error"></p>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="passwordOld">Nhập mật khẩu hiện tại: </label>
+                <input type="password" id="passwordOld" class="form-control" placeholder="Nhập mật khẩu cũ">
+            </div>
+            <div class="mb-3">
+                <label for="passwordNew">Nhập mật khẩu mới: </label>
+                <input type="password" id="passwordNew" class="form-control" placeholder="Nhập mật khẩu mớĩ">
+            </div>
+            <div class="mb-3">
+                <label for="passwordNewReq">Nhập lại mật khẩu mới: </label>
+                <input type="password" id="passwordNewReq" class="form-control" placeholder="Nhập mật lại khẩu mới">
+                <p id="errorRepass"></p>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-danger btn-exitChangePassword" th:data-value="${partner.getId()}">Thoát</button>
+                <button class="btn btn-success btn-sendChangePassword" th:data-value="${partner.getId()}">Cập nhập</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script th:src="@{/web/js/partners/infoUser.js}"></script>

@@ -1,0 +1,40 @@
+<table class="table table-hover">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">STT</th>
+    <th scope="col" class="admin_role">Org_code</th>
+    <th scope="col">Service_code</th>
+    <th scope="col">Request Id</th>
+
+    <th scope="col">Request Time</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="transaction, start : ${transactionPage}">
+    <th scope="row" th:text="${start.index + 1}"></th>
+    <td class="admin_role" th:text="${transaction.getOrgCode()}">
+    </td>
+    <td>
+      <a href="#" th:data-id="${transaction.getId()}" class="link-bank view-transaction" th:text="${transaction.getCategoryServices().getServiceName()}">
+      </a>
+    </td>
+    <td th:text="${transaction.getRequestId()}"></td>
+    <td th:text="${transaction.getTimeRequest()}"></td>
+    <td>
+      <button type="button" class="btn btn-success" th:if="${transaction.getStatusCode() == '200'}">Success</button>
+      <button type="button" class="btn btn-danger" th:if="${transaction.getStatusCode() != '200'}">Fail</button>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+<div>
+  <a th:if="${transactionPage.hasPrevious()}" th:data-page="${transactionPage.number - 1}" th:data-size="${transactionPage.size}" class="prevPageTransaction">Previous</a>
+
+  <input th:value="${transactionPage.number + 1}" class="inputPage" th:maxlength="${transactionPage.totalPages}"> / <span th:text="${transactionPage.totalPages}">1</span>
+
+  <a th:if="${transactionPage.hasNext()}"
+     th:data-page="${transactionPage.number + 1}" th:data-size="${transactionPage.size}" class="nextPageTransaction">Next</a>
+</div>
+<script th:src="@{/web/js/transactions/listTransaction.js}"></script>

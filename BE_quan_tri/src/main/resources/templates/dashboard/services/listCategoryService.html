@@ -1,0 +1,115 @@
+<div class="content-page">
+    <div class="content">
+        <!-- Start Content-->
+        <div class="container-fluid">
+
+            <div class="row">
+
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center p-2">
+                        <div class="info-topLeft">
+                            <a href="#" id="info-topLeft-prev">
+                                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                            </a>
+                            <label>
+                                <b> Trở lại </b>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="tab-content" id="myTabContent" style="margin-top: 20px;">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="info-left d-flex align-items-center justify-content-center p-3 flex-column">
+                                        <div class="info-left-avatar">
+                                            <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                                        </div>
+                                        <div class="info-left-status mb-3">
+                                            <button type="button" class="btn btn-success btn-addNewService"  >
+                                                <i class="fa fa-plus" aria-hidden="true"></i> Thêm danh mục dịch vụ
+                                            </button>
+                                        </div>
+                                        <div class="info-left-email w-100 overflow-hidden">
+                                            <table class="table table-hover">
+                                                <thead class="thead-dark">
+                                                <tr>
+                                                    <th scope="col">STT</th>
+                                                    <th scope="col">Tên danh mục dịch vụ</th>
+                                                    <th scope="col">Trạng thái</th>
+                                                    <th scope="col">Ngày tạo</th>
+                                                    <th scope="col">Hành động</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr th:each="item, start : ${serviceSVS}">
+                                                    <th scope="row" th:text="${start.index + 1}"></th>
+                                                    <td th:text="${item.getServiceName()}">
+<!--                                                        <a href="#" th:data-id="${item.getId()}" class="link-bank view-categoryService" th:text="${item.getServiceName()}">-->
+<!--                                                        </a>-->
+                                                    </td>
+                                                    <td>
+                                                        <i th:if="${item.getStatus() == 1}" th:data-id="${item.getId()}" th:data-status="${item.getStatus()}" class="fa fa-toggle-on updateStatus" aria-hidden="true"></i>
+                                                        <i th:if="${item.getStatus() == 0}" th:data-id="${item.getId()}" th:data-status="${item.getStatus()}" class="fa fa-toggle-off updateStatus" aria-hidden="true"></i>
+                                                    </td>
+                                                    <td th:text="${item.getCreatedAt()}" ></td>
+                                                    <td>
+<!--                                                        <a href="#" class="link-bank view-categoryService" th:data-id="${item.getId()}">-->
+<!--                                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>-->
+<!--                                                        </a>-->
+                                                        <a href="#" class="remove-partner-service" th:data-id="${item.getId()}">
+                                                            <i class="fa fa-trash" aria-hidden="true"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade modal-addService" id="modalAddService" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog d-flex align-items-center">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> Thêm mới nhóm dịch vụ </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between align-items-center mb-2 addService-content">
+                        <label for="addNameService">Tên nhóm dịch vụ : </label>
+                        <input type="text" id="addNameService" placeholder="Nhập tên nhóm dịch vụ">
+
+                    </div>
+                    <p class="mb-3 box-error"><i class="errorFromGloable" id="loiCategorySVName"></i></p>
+                    <div class="d-flex justify-content-between align-items-center mb-2 addService-content">
+                        <label for="addCodeService">Mã nhóm dịch vụ : </label>
+                        <input type="text" id="addCodeService" placeholder="Nhập mã nhóm dịch vụ">
+                    </div>
+                    <p class="mb-3 box-error"><i class="errorFromGloable" id="loiCategorySVCode"></i></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary btn-close-addService" data-bs-dismiss="modal">Thoát</button>
+                    <button type="button" class="btn btn-primary btn-send-addService">Thêm nhóm dịch vụ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="box-content-serviceChildren" class="d-flex justify-content-center align-items-center">
+
+    </div>
+</div>
+<script th:src="@{/web/js/services/listCategoryService.js}"></script>

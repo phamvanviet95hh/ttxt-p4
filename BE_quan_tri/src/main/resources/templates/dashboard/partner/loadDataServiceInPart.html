@@ -1,0 +1,19 @@
+<table class="table table-hover">
+    <thead class="thead-dark">
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col"> Dich vu </th>
+        <th scope="col" id="partActionInfo" class="admin_role">Hành động</th>
+    </tr>
+    </thead>
+    <tbody id="load-CateOfPart">
+    <tr th:each="cate, start : ${categoryOfPartnerDtosList}">
+        <th scope="row" th:text="${start.index + 1}"></th>
+        <td th:text="${cate.getServiceName() == null ? 'Chưa đăng ký dịch vụ' : cate.getServiceName() }">...</td>
+        <td id="partActionInfo-detail" class="admin_role">
+            <button class="btn btn-danger btn-removeService" th:data-service="${cate.getIdService()}" th:data-value="${idCateGory}" th:data-id="${idPartner}">Xoá dịch vụ</button>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<script th:src="@{/web/js/partners/loadDataServiceInPart.js}"></script>

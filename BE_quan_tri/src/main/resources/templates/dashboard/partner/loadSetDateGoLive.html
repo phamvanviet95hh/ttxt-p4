@@ -1,0 +1,61 @@
+<div class="box-golive">
+    <div class="box-icon-close">
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    </div>
+    <div class="box-golive-partner mb-3">
+        <input type="datetime-local" value="" id="datetimeInput" name="date-golive-partner" class="form-control">
+        <button id="okButton">OK</button>
+    </div>
+    <button  class="btn btn-success btn-setGoLive" th:data-idCate="${idCate}" th:data-idPart="${idPart}">Set GoLive</button>
+</div>
+<script>
+    $(document).ready(function (){
+        const datetimeInput = document.getElementById("datetimeInput");
+        const okButton = document.getElementById("okButton");
+
+        // Hiển thị nút OK khi nhấn vào input
+        datetimeInput.addEventListener("focus", () => {
+            okButton.style.display = "inline-block";
+        });
+
+        // Đóng bộ chọn và ẩn nút OK khi nhấn nút OK
+        okButton.addEventListener("click", () => {
+            datetimeInput.blur(); // Loại bỏ focus khỏi input để đóng bộ chọn
+            okButton.style.display = "none"; // Ẩn nút OK sau khi nhấn
+        });
+
+        // Hiển thị nút OK mỗi khi input được focus lại
+        datetimeInput.addEventListener("focus", () => {
+            okButton.style.display = "inline-block";
+        });
+
+        // Ẩn nút OK khi input mất focus, nhưng giữ 200ms để người dùng kịp bấm nút
+        datetimeInput.addEventListener("blur", () => {
+            setTimeout(() => {
+                okButton.style.display = "none";
+            }, 200);
+        });
+    });
+    $(".box-icon-close").click(function (){
+        $(this).parent().parent().removeClass("hien");
+    });
+    $(".btn-setGoLive").click(function (){
+       let idCate = $(this).attr("data-idCate");
+       let datetimeInput = $("#datetimeInput").val();
+       let idPart  = $(this).attr("data-idPart");
+       var header = {
+           "Content-Type": "application/json"
+       };
+       var bodyData = JSON.stringify({
+           "idCate": idCate,
+           "datetime": datetimeInput,
+           "idPart": idPart,
+       });
+       customPost(`${localdomain}/golive/addTime`, header, bodyData);
+       setTimeout(closePopup, 1500);
+    });
+
+    function closePopup(){
+        $("#info-box-golive").removeClass("hien");
+    }
+</script>
