@@ -9,11 +9,15 @@
                         <div class="row">
                             <div class="loc ms-3" style="margin-right: 10px">
                                 <label for="startdate">Từ ngày :</label>
-                                <input type="datetime-local" name="startdate" id="startdate" value="">
+<!--                                <input type="datetime-local" name="startdate" id="startdate" value="">-->
+                                <input type="text" id="startDate" name="startDate">
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
                             </div>
                             <div class="loc ms-3" style="margin-right: 10px">
                                 <label for="enddate">Đến ngày :</label>
-                                <input type="datetime-local" name="enddate" id="enddate" value="">
+<!--                                <input type="datetime-local" name="enddate" id="enddate" value="">-->
+                                <input type="text" id="endDate" name="endDate">
+                                <i class="fa fa-calendar-o" aria-hidden="true"></i>
                             </div>
                             <div class="loc ms-3" style="margin-right: 10px" >
                                 <select id="partnerName">
@@ -85,4 +89,6 @@
         </div>
     </div>
 </div>
+<script th:src="@{/web/js/jquery-ui.min.js}"></script>
+<script th:src="@{/web/js/jquery-ui-timepicker-addon.min.js}"></script>
 <script th:src="@{/web/js/report/listReport.js}"></script>

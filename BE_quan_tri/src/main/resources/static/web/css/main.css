@@ -1270,3 +1270,12 @@ li.partner i.fa-users{
     height: 450px;
     overflow-y: scroll;
 }
+.loc{
+    position: relative;
+}
+.fa-calendar-o{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+}

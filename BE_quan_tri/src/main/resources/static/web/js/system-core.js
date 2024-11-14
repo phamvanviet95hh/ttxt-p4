@@ -211,6 +211,24 @@ function getFirstDayOfMonth() {
     return formattedDate;
 }
 
+function getCustomFirstDayOfMonth(){
+    const dateStr = getFirstDayOfMonth();
+    // Chuyển chuỗi thành đối tượng Date
+    const date = new Date(dateStr);
+    // Lấy các phần ngày, tháng, năm, giờ, phút, giây
+    const day = String(date.getDate()).padStart(2, '0'); // Ngày
+    const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng (cần +1 vì getMonth trả về từ 0 đến 11)
+    const year = date.getFullYear(); // Năm
+    const hours = String(date.getHours()).padStart(2, '0'); // Giờ
+    const minutes = String(date.getMinutes()).padStart(2, '0'); // Phút
+    const seconds = String(date.getSeconds()).padStart(2, '0'); // Giây
+
+// Kết hợp thành chuỗi định dạng mong muốn
+    const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+    return formattedDate;
+}
+
 function getLastDayOfMonth() {
     const now = new Date();
     const year = now.getFullYear();
@@ -232,6 +250,24 @@ function getLastDayOfMonth() {
     const formattedDate = `${yearString}-${monthString}-${dayString}T${hoursString}:${minutesString}:${secondsString}`;
 
     return formattedDate;
+}
+
+function getCustomLastDayOfMonth(){
+    const dateStr = getLastDayOfMonth();
+    // Chuyển chuỗi thành đối tượng Date
+    const dateLast = new Date(dateStr);
+    // Lấy các phần ngày, tháng, năm, giờ, phút, giây
+    const day = String(dateLast.getDate()).padStart(2, '0'); // Ngày
+    const month = String(dateLast.getMonth() + 1).padStart(2, '0'); // Tháng (cần +1 vì getMonth trả về từ 0 đến 11)
+    const year = dateLast.getFullYear(); // Năm
+    const hours = String(dateLast.getHours()).padStart(2, '0'); // Giờ
+    const minutes = String(dateLast.getMinutes()).padStart(2, '0'); // Phút
+    const seconds = String(dateLast.getSeconds()).padStart(2, '0'); // Giây
+
+// Kết hợp thành chuỗi định dạng mong muốn
+    const formattedDateLast = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+    return formattedDateLast;
 }
 $(document).ready(function (){
     function updateClock() {
@@ -281,5 +317,13 @@ function getCurrentLocalDateTime() {
     const day = String(date.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
+function getConvertLocalDateTimeNew(str1){
+    const [datePart, timePart] = str1.split(" ");
+    const [day, month, year] = datePart.split("/");
+    const [hours, minutes, seconds] = timePart.split(":");
 
+    const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+
+    return formattedDate;
+}
 

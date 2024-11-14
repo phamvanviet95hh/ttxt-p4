@@ -1,7 +1,10 @@
 $(document).ready(function(){
-    console.log("ạdgashudvasghdvasghd")
-    $("#startdate").attr("value", getFirstDayOfMonth());
-    $("#enddate").attr("value", getLastDayOfMonth());
+    console.log(getCustomFirstDayOfMonth());
+
+    let startDate = $("#startDate")
+    let endDate = $("#endDate");
+    startDate.attr("value", getCustomFirstDayOfMonth());
+    endDate.attr("value", getCustomLastDayOfMonth());
     if(role === "ADMIN"){
 
     }else if(role === "PARTNER"){
@@ -14,8 +17,10 @@ $(document).ready(function(){
         router(`${localdomain}/reports/listDetail?id=${idPartner}&startDate=${getFirstDayOfMonth()}&endDate=${getLastDayOfMonth()}`);
     });
     $(".btn-findReport").click(function(){
-        let startDate = $("#startdate").val();
-        let endDate = $("#enddate").val();
+        let startDateFrom = $("#startDate").val();
+        let endDateFrom = $("#endDate").val();
+        let startDate = getConvertLocalDateTimeNew(startDateFrom);
+        let endDate = getConvertLocalDateTimeNew(endDateFrom);
         let idPartner = $("#partnerName").val();
         if (role === "ADMIN"){
             customGetPage(`/reports/findListReport?id=${idPartner}&startDate=${startDate}&endDate=${endDate}`, "#loadReport")
@@ -46,6 +51,23 @@ $(document).ready(function(){
             window.location.href = `${localdomain}/reports/exportDataListPartnerReport?id=${userId}&startDate=${startDate}&endDate=${endDate}`;
         }
 
+    });
+
+    $("#endDate").datetimepicker({
+        dateFormat: "dd/mm/yy",
+        timeFormat: "HH:mm:ss",
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        showSecond: true
+    });
+    $("#startDate").datetimepicker({
+        dateFormat: "dd/mm/yy",
+        timeFormat: "HH:mm:ss",
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        showSecond: true
     });
     
 });
