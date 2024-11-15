@@ -52,22 +52,9 @@ $(document).ready(function(){
         }
 
     });
-
-    $("#endDate").datetimepicker({
-        dateFormat: "dd/mm/yy",
-        timeFormat: "HH:mm:ss",
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        showSecond: true
-    });
-    $("#startDate").datetimepicker({
-        dateFormat: "dd/mm/yy",
-        timeFormat: "HH:mm:ss",
-        changeMonth: true,
-        changeYear: true,
-        showButtonPanel: true,
-        showSecond: true
-    });
     
+    
+
+    
+
 });

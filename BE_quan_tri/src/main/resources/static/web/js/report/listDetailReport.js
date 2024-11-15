@@ -1,6 +1,6 @@
 
-$("#startdate").attr("value", getFirstDayOfMonth());
-$("#enddate").attr("value", getLastDayOfMonth());
+$("#startDate").attr("value", getCustomFirstDayOfMonth());
+$("#endDate").attr("value", getCustomLastDayOfMonth());
 $(".box-icon-close").click(function(){
     $("#box-content-report-children").removeClass("hien");
 })

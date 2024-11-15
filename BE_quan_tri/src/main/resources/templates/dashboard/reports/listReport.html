@@ -89,6 +89,23 @@
         </div>
     </div>
 </div>
-<script th:src="@{/web/js/jquery-ui.min.js}"></script>
-<script th:src="@{/web/js/jquery-ui-timepicker-addon.min.js}"></script>
+<script>
+    $("#endDate").datetimepicker({
+        dateFormat: "dd/mm/yy",
+        timeFormat: "HH:mm:ss",
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        showSecond: true
+    });
+    $("#startDate").datetimepicker({
+        dateFormat: "dd/mm/yy",
+        timeFormat: "HH:mm:ss",
+        changeMonth: true,
+        changeYear: true,
+        showButtonPanel: true,
+        showSecond: true
+    });
+</script>
+
 <script th:src="@{/web/js/report/listReport.js}"></script>
